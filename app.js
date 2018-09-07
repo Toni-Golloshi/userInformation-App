@@ -20,6 +20,16 @@ app.get('/users', function(request, response){
   });
 });
 
+app.get('/', function(request, response){
+  fs.readFile('users.json', function(err,data){
+    if(err){
+      throw err;
+    }
+    let users = JSON.parse(data);
+    response.render("home" , {users: users})
+  });
+});
+
 app.get('/search', function(request,response){
   response.render('search')
 });
@@ -64,7 +74,7 @@ app.post('/form', function(request,response){
 
 
 });
-response.redirect("users")
+response.redirect("home")
 });
 
 

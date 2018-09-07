@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <nav>
+    <div class="navbar">
+      <div id="nav1">
+        <a href="/">Home</a>
+      </div>
+      <div id="nav2">
+        <a href="search">Search</a>
+      </div>
+      <div id>
+        <a href="form">Add User</a>
+      </div>
+    </div>
+  </nav>
+  <div class="result">
   <% for(let i=0;i<users.length;i++){%>
-    <% if(name.name==users[i].firstname || name.name==users[i].lastname){%>
+    <% if(name.name.toUpperCase()==users[i].firstname.toUpperCase() || name.name.toUpperCase()==users[i].lastname.toUpperCase()){%>
       <%=users[i].firstname %>
       <%=users[i].lastname %>
     </br>
       <%=users[i].email %>
     <%}%>
   <%}%>
+</div>
 </body>
 </html>

@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <form action="/search" method="POST">
-      <input type="text" name="name">
+  <nav>
+    <div class="navbar">
+      <div id="nav1">
+        <a href="/">Home</a>
+      </div>
+      <div id="nav2">
+        <a href="#">Search</a>
+      </div>
+      <div id>
+        <a href="form">Add User</a>
+      </div>
+    </div>
+  </nav>
+  <form class="search" action="/search" method="POST">
+      <input type="text" name="name" placeholder="Search names">
       <button type="submit">Submit</button>
     </form>
   </body>

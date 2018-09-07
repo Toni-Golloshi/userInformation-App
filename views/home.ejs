@@ -7,7 +7,7 @@
   <nav>
     <div class="navbar">
       <div id="nav1">
-        <a href="/">Home</a>
+        <a href="#">Home</a>
       </div>
       <div id="nav2">
         <a href="search">Search</a>
@@ -18,7 +18,7 @@
     </div>
   </nav>
   <% for(let i=0;i<users.length;i++) {%>
-    <ul>
+    <ul class="form">
       <li>First name : <%= users[i].firstname%></li>
       <li>Last name : <%= users[i].lastname %></li>
       <li>Email : <%= users[i].email %></li>

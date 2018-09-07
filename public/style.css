@@ -1,0 +1,43 @@
+.navbar{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  /* margin-left: 500px; */
+  width: 100%;
+  padding-bottom: 3%;
+  padding-top: 3%;
+  background-color: #758caf;
+}
+a {
+  display: block;
+}
+a:hover{
+  color: #ed4b4b;
+}
+.form{
+margin-left: 40%;
+margin-top: 5%;
+}
+
+body {
+   background-image: url("bckg1.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+
+}
+
+.search{
+  padding-top: 10%;
+  padding-left:43.5%;
+}
+
+.input{
+  padding-top: 10%;
+  padding-left:35%;
+}
+
+.result{
+  padding-top: 10%;
+  padding-left:45%;
+}
