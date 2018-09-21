@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script
+ src="https://code.jquery.com/jquery-3.3.1.js"
+ integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+ crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="navbar">
+      <div id="nav1">
+        <a href="/">Home</a>
+      </div>
+      <div id="nav2">
+        <a href="#">Search</a>
+      </div>
+      <div id>
+        <a href="form">Add User</a>
+      </div>
+    </div>
+  </nav>
+  <form class="search" action="/search" method="POST">
+    <!-- <form class="search"> -->
+
+      <input type="text" id="target" autocomplete="off" name="name" placeholder="Search names">
+      <!-- <button type="submit">Submit</button> -->
+    </form>
+
+    <ul id="info"></ul>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        let myVar = null;
+      $("#target").keyup(function(){
+        let name = $("#target").val();
+        clearTimeout(myVar)
+        if(name.length!=0){
+        myVar = setTimeout(function(){
+        $.post('/search',{name: name}).done((data)=>{
+          $('#info').empty()
+          for(const el in data){
+            $('#info').append(`<ul>${data[el].firstname} ${data[el].lastname} ${data[el].email}</ul>`);
+          }
+        });
+      },300);
+      } 
+      else{
+        $('#info').empty();
+
+      }
+      });
+    });
+
+        </script>
+  </body>
+  </html>
