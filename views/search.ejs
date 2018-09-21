@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script
+ src="https://code.jquery.com/jquery-3.3.1.js"
+ integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+ crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -18,8 +22,32 @@
     </div>
   </nav>
   <form class="search" action="/search" method="POST">
-      <input type="text" name="name" placeholder="Search names">
-      <button type="submit">Submit</button>
+    <!-- <form class="search"> -->
+
+      <input type="text" id="target" autocomplete="off" name="name" placeholder="Search names">
+      <!-- <button type="submit">Submit</button> -->
     </form>
+
+    <ul id="info"></ul>
+    <script type="text/javascript">
+      $(document).ready(function(){
+      $("#target").keyup(function(){
+        let name = $("#target").val();
+        if(name.length!=0){
+        $.post('/search',{name: name}).done((data)=>{
+          $('#info').empty()
+          for(const el in data){
+            $('#info').append(`<ul>${data[el].firstname} ${data[el].lastname} ${data[el].email}</ul>`);
+          }
+        });
+      }
+      else{
+        $('#info').empty();
+
+      }
+      });
+    });
+
+        </script>
   </body>
   </html>

@@ -37,14 +37,23 @@ app.get('/search', function(request,response){
 
 // Post results of search
 app.post('/search', function(request,response){
+
   fs.readFile('users.json', function(err,data){
     if(err){
       throw err;
     }
     let users = JSON.parse(data);
-    console.log(request.body);
-    let name = request.body;
-    response.render('result',{users: users, name: name})
+    console.log(request.body.name);
+    let name = request.body.name;
+    let matchedUsers = [];
+       for (let i = 0; i < users.length; i++) {
+         let newMatchedUser = users[i];
+         if (newMatchedUser.firstname.toLowerCase().includes(name) === true || newMatchedUser.lastname.toLowerCase().includes(name) === true) {
+           matchedUsers.push(newMatchedUser)
+           console.log(`Found a user with firstname is ${newMatchedUser.firstname} and lastname is ${newMatchedUser.lastname}`)
+         }
+       }
+       response.send(matchedUsers);
   });
 });
 
