@@ -20,6 +20,7 @@ app.get('/users', function(request, response){
   });
 });
 
+// Home
 app.get('/', function(request, response){
   fs.readFile('users.json', function(err,data){
     if(err){
@@ -29,13 +30,12 @@ app.get('/', function(request, response){
     response.render("home" , {users: users})
   });
 });
-
+// Search
 app.get('/search', function(request,response){
   response.render('search')
 });
 
-
-
+// Post results of search
 app.post('/search', function(request,response){
   fs.readFile('users.json', function(err,data){
     if(err){
@@ -54,6 +54,7 @@ app.get('/form' , function(request,response){
 
 });
 
+//add users
 app.post('/form', function(request,response){
   var newdata = request.body
   fs.readFile('users.json', function (err,data){
@@ -70,11 +71,9 @@ app.post('/form', function(request,response){
       throw err;
     }
   })
-  // console.log(newuser)
-
 
 });
-response.redirect("home")
+response.redirect("/")
 });
 
 
